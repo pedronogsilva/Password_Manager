@@ -12,8 +12,29 @@ Version 0.0.0 -> 11/XX/2025
 Version 0.0.0 -> 11/XX/2025
 */
 
+import java.util.Scanner;
+
 public class App {
+    static Scanner Scanner = new Scanner(System.in);
+
+    static String UserLogIn = "";
+    static String PassLogIn = "";
+
+    static void LoginApp() { /* Just a test */
+        System.out.printf("---------------LogIn App---------------\n");
+        System.out.printf("\n   User/Email:\n->");
+        UserLogIn = Scanner.nextLine();
+        System.out.printf("\n   Password:\n->");
+        PassLogIn = Scanner.nextLine();
+    }
+
+    static void ClearScreen() {
+        // Clear the console screen and print the app header
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
     public static void main(String[] args) throws Exception {
+        ClearScreen();
         System.out.println("Hello, World!");
     }
 }
