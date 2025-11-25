@@ -16,6 +16,8 @@ Version 0.1.3 -> 11/25/2025
     View
 Version 0.1.4 -> 11/25/2025
     Edit, Delete
+Version 0.1.5 -> 11/26/2025
+    Create .exe file with PyInstaller
 """
 
 import sqlite3
@@ -110,7 +112,7 @@ def add():
 
         c.execute("INSERT INTO passwords (site, login, username, password) VALUES (?, ?, ?, ?)", (site, login, found_username, found_password))
         conn.commit()
-        print("      Password added successfully!")
+        print("\n      Password added successfully!")
         input()
 
     else:
@@ -204,7 +206,7 @@ def edit():
         new_username = input("  ->").strip()
         c.execute("UPDATE passwords SET username = ? WHERE id = ?", (new_username, found_id))
         conn.commit()
-        print("      Password updated successfully!")
+        print("\n      Password updated successfully!")
         input()
 
     elif edit_option == "2":
@@ -214,7 +216,7 @@ def edit():
         new_password = input("  ->").strip()
         c.execute("UPDATE passwords SET password = ? WHERE id = ?", (new_password, found_id))
         conn.commit()
-        print("      Password updated successfully!")
+        print("\n      Password updated successfully!")
         input()
 
     else:
@@ -237,14 +239,14 @@ def delete():
 
     if not results:
         clear()
-        print("---------------Edit Password-----------------\n\n")
+        print("---------------Delete Password---------------\n\n")
         print("      Site or App not found in the database!")
         input()
         conn.close()
         return
 
     clear()
-    print("---------------Edit Password-----------------\n\n")
+    print("---------------Delete Password---------------\n\n")
     for idx, row in enumerate(results, start=1):
         f_id, f_site, f_login, f_username, f_password = row
         print(f"      [{idx}] Username/Email: {f_username}, Password: {f_password}")
