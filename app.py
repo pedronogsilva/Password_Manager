@@ -59,7 +59,7 @@ def add():
         password = input("  ->").strip()
         c.execute("INSERT INTO passwords (site, login, username, password) VALUES (?, ?, ?, ?)", (site, login, username, password))
         conn.commit()
-        print("      Password added successfully!")
+        print("\n      Password added successfully!")
         input()
 
     # If the type of login is fast login, ask the user for the quick login name
