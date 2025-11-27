@@ -18,6 +18,8 @@ Version 0.1.4 -> 11/25/2025
     Edit, Delete
 Version 0.1.5 -> 11/26/2025
     Create .exe file with PyInstaller
+Version 0.1.6 -> 11/27/2025
+    Bugs correcions
 """
 
 import sqlite3
