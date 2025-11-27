@@ -46,6 +46,14 @@ def add():
     print("---------------Adding Password---------------\n\n      What is the app or website?")
     site = input("  ->").strip().capitalize()
 
+    if not site:
+        clear()
+        print("---------------Adding Password---------------\n\n")
+        print("      Site/App cannot be empty! Please ENTER to return menu.")
+        input()
+        conn.close()
+        return
+
     clear()
     print("---------------Adding Password---------------\n\n      [1] Username / Email / Password\n      [2] Fast Login")
     login = input("\n  ->").strip()
@@ -55,11 +63,29 @@ def add():
         clear()
         print("---------------Adding Password---------------\n\n      Username/Email:")
         username = input("  ->").strip()
+
+        if not username:
+            clear()
+            print("---------------Adding Password---------------\n\n")
+            print("      Username/Email cannot be empty! Please ENTER to return menu.")
+            input()
+            conn.close()
+            return
+        
         print("\n      Password:")
         password = input("  ->").strip()
+
+        if not password:
+            clear()
+            print("---------------Adding Password---------------\n\n")
+            print("      Password cannot be empty! Please ENTER to return menu.")
+            input()
+            conn.close()
+            return
+
         c.execute("INSERT INTO passwords (site, login, username, password) VALUES (?, ?, ?, ?)", (site, login, username, password))
         conn.commit()
-        print("\n      Password added successfully!")
+        print("\n      Password added successfully! Please ENTER to return menu.")
         input()
 
     # If the type of login is fast login, ask the user for the quick login name
@@ -73,7 +99,7 @@ def add():
         if not results:
             clear()
             print("---------------Adding Password---------------\n\n")
-            print("      Quick login not found in the database!")
+            print("      Quick login not found in the database! Please ENTER to return menu.")
             input()
             conn.close()
             return
@@ -93,7 +119,7 @@ def add():
                 if choice_idx < 0 or choice_idx >= len(results):
                     clear()
                     print("---------------Adding Password---------------\n\n")
-                    print("      Invalid choice. Cancelling.")
+                    print("      Invalid choice. Cancelling. Please ENTER to return menu.")
                     input()
                     conn.close()
                     return
@@ -112,13 +138,13 @@ def add():
 
         c.execute("INSERT INTO passwords (site, login, username, password) VALUES (?, ?, ?, ?)", (site, login, found_username, found_password))
         conn.commit()
-        print("\n      Password added successfully!")
+        print("\n      Password added successfully! Please ENTER to return menu.")
         input()
 
     else:
         clear()
         print("---------------Adding Password---------------\n\n")
-        print("      Invalid Option! Please try again.")
+        print("      Invalid Option! Please try again.  Please ENTER to return menu.")
         input()
 
     conn.close()
@@ -135,7 +161,7 @@ def view():
     if not results:
         clear()
         print("---------------View Passwords----------------\n\n")
-        print("      No passwords found in the database!")
+        print("      No passwords found in the database!  Please ENTER to return menu.")
         input()
         conn.close()
 
@@ -160,7 +186,7 @@ def edit():
     if not results:
         clear()
         print("---------------Edit Password-----------------\n\n")
-        print("      Site or App not found in the database!")
+        print("      Site or App not found in the database! Please ENTER to return menu.")
         input()
         conn.close()
         return
@@ -178,7 +204,7 @@ def edit():
         if choice_idx < 0 or choice_idx >= len(results):
             clear()
             print("---------------Edit Password-----------------\n\n")
-            print("      Invalid choice. Cancelling.")
+            print("      Invalid choice. Cancelling.  Please ENTER to return menu.")
             input()
             conn.close()
             return
@@ -186,7 +212,7 @@ def edit():
     except ValueError:
         clear()
         print("---------------Edit Password-----------------\n\n")
-        print("      Invalid input. Cancelling.")
+        print("      Invalid input. Cancelling.  Please ENTER to return menu.")
         input()
         conn.close()
         return
@@ -206,7 +232,7 @@ def edit():
         new_username = input("  ->").strip()
         c.execute("UPDATE passwords SET username = ? WHERE id = ?", (new_username, found_id))
         conn.commit()
-        print("\n      Password updated successfully!")
+        print("\n      Username/Email updated successfully! Please ENTER to return menu.")
         input()
 
     elif edit_option == "2":
@@ -216,13 +242,13 @@ def edit():
         new_password = input("  ->").strip()
         c.execute("UPDATE passwords SET password = ? WHERE id = ?", (new_password, found_id))
         conn.commit()
-        print("\n      Password updated successfully!")
+        print("\n      Password updated successfully! Please ENTER to return menu.")
         input()
 
     else:
         clear()
         print("---------------Edit Password-----------------\n\n")
-        print("      Invalid Option! Please try again.")
+        print("      Invalid Option! Please try again,  ENTER to return menu.")
         input()
 
     conn.close()
@@ -240,7 +266,7 @@ def delete():
     if not results:
         clear()
         print("---------------Delete Password---------------\n\n")
-        print("      Site or App not found in the database!")
+        print("      Site or App not found in the database! Please ENTER to return menu.")
         input()
         conn.close()
         return
@@ -257,7 +283,7 @@ def delete():
         if choice_idx < 0 or choice_idx >= len(results):
             clear()
             print("---------------Delete Password---------------\n\n")
-            print("      Invalid choice. Cancelling.")
+            print("      Invalid choice. Cancelling. Please ENTER to return menu.")
             input()
             conn.close()
             return
@@ -265,7 +291,7 @@ def delete():
     except ValueError:
         clear()
         print("---------------Delete Password---------------\n\n")
-        print("      Invalid input. Cancelling.")
+        print("      Invalid input. Cancelling. Please ENTER to return menu.")
         input()
         conn.close()
         return
@@ -284,12 +310,12 @@ def delete():
 
         clear()
         print("---------------Delete Password---------------\n\n")
-        print("      Entry deleted successfully!")
+        print("      Entry deleted successfully! Please ENTER to return menu.")
         input()
     else:
         clear()
         print("---------------Delete Password---------------\n\n")
-        print("      Delete cancelled.")
+        print("      Delete cancelled. Please ENTER to return menu.")
         input()
 
 
@@ -331,5 +357,5 @@ while True:
     else:
         clear()
         print("---------------PassWord Manager App ---------------\n\n")
-        print("      Invalid Option! Please try again.")
+        print("      Invalid Option! Please ENTER to return menu.")
         input()
