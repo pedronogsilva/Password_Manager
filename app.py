@@ -3,7 +3,7 @@ This code consists of a password manager application that works through a Comman
 This project was started on 11/18 at 2:10 AM. It was being developed because I was simply saving my passwords in a .txt file.
 It wasn't organized no matter how hard we tried. With this application, the organization will be much better.
 
-Starting Date: 11/18/2025 - Finish Date: "ongoing"
+Starting Date: 11/18/2025 - Finish Date: 11/27/2025
 
 Version 0.0.0 -> 11/18/2025
 Version 0.0.1 -> 11/22/2025
