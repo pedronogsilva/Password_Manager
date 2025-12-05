@@ -21,7 +21,6 @@ The installer is available in the [`Output`](./Output) folder:
 1. Navigate to the `Output` folder.
 2. Run the file `password-manager.exe`.
 3. Follow the installer instructions:
-   - Read the pre-install information file (`PREINSTALLINFO.txt`).
    - Choose the installation folder (default is recommended).
    - Complete the installation.
 4. After installation:
