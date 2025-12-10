@@ -1,0 +1,26 @@
+Password Manager – Pre-Installation Information
+=================================================
+
+Welcome to the Password Manager installer!
+
+This application allows you to securely store all your passwords for free.
+
+Before continuing, please read carefully:
+
+1. **Privacy**
+   - All data is stored locally on your computer.
+   - The application does not collect or send any data over the internet.
+
+2. **Security**
+   - Passwords are stored in a file at /bin/database.db. If this file is deleted, all data will be lost.
+   - Do not share the file with anyone as that person will have access to your passwords.
+
+3. **Requirements**
+   - Operating System: Windows 7 or higher.
+   - Permissions: Administrator rights are not required if installing in the user’s folder.
+
+4. **Terms**
+   - This application is distributed for free.
+   - The author is not responsible for any data loss.
+
+Press Accept to continue with the installation.
