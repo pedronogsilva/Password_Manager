@@ -3,7 +3,7 @@
 ; Non-commercial use only
 
 #define MyAppName "Password Manager"
-#define MyAppVersion "1.1.0"
+#define MyAppVersion "1.1.1"
 #define MyAppPublisher "pedronogsilva"
 #define MyAppURL "https://github.com/pedronogsilva/Password_Manager"
 #define MyAppExeName "Password_Manager.exe"

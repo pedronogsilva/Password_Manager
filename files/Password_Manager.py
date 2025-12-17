@@ -18,11 +18,11 @@ def add():
     if not site:
         clear(); input("------------------------------Adding Password------------------------------\n\n\t\tSite/App empty! Press ENTER."); conn.close(); return;
 
-    clear(); print("------------------------------Adding Password------------------------------\n\n\t[1] Username/Email, Password\n\t[2] Fast Login");
+    clear(); print("------------------------------Adding Password------------------------------\n\n\t[1] User/Email, Password\n\t[2] Fast Login");
     login = input("\n  ->").strip();
 
     if login == "1":
-        clear(); print("------------------------------Adding Password------------------------------\n\n\tUsername/Email:");
+        clear(); print("------------------------------Adding Password------------------------------\n\n\tUser/Email:");
         username = input("  ->").strip();
 
         if not username:
@@ -48,7 +48,7 @@ def add():
             clear(); print("------------------------------Adding Password------------------------------\n\n");
             for idx, row in enumerate(results, start=1):
                 f_id, f_site, f_login, f_username, f_password = row;
-                print(f"      [{idx}] Username/Email: {f_username}");
+                print(f"\t\t[{idx}] User/Email: {f_username}");
             choice = input("\n  ->").strip();
 
             try:
@@ -83,7 +83,7 @@ def view():
     if choice == "1":
         clear(); print("------------------------------View Passwords-------------------------------\n\n");
         for site, username, password in results:
-            print(f"\tSite: {site} | User: {username} | Pass: {password}");
+            print(f"\tSite: {site} | User/Email: {username} | Pass: {password}");
         input("\n\t\tPress ENTER to return menu."); conn.close();
     
     elif choice == "2":
@@ -115,7 +115,7 @@ def view():
                     clear(); print("------------------------------View Passwords-------------------------------\n\n");
 
                     for i, row in enumerate(results, start=1):
-                        f_id, f_site, f_login, f_username, f_password = row; print(f"\tSite: {f_site} | User: {f_username} | Pass: {f_password}");
+                        f_id, f_site, f_login, f_username, f_password = row; print(f"\tSite: {f_site} | User/Email: {f_username} | Pass: {f_password}");
                     input("\n\t\tPress ENTER to return menu."); break;
 
                 except ValueError:
@@ -135,7 +135,7 @@ def edit():
     clear(); print("------------------------------Edit Password--------------------------------\n\n");
     for idx, row in enumerate(results, start=1):
         f_id, f_site, f_login, f_username, f_password = row;
-        print(f"\t[{idx}] Username/Email: {f_username}");
+        print(f"\t[{idx}] User/Email: {f_username}");
     choice = input("\n  ->").strip();
 
     try:
@@ -150,13 +150,13 @@ def edit():
     found_id, found_site, found_login, found_username, found_password = selected;
 
     clear(); print("------------------------------Edit Password--------------------------------\n\n");
-    print(f"\t[{choice}] Username/Email: {found_username}, Password: {found_password}\n");
-    print("\tWhat do you want to edit?\n\n\t[1] Username/Email\n\t[2] Password"); edit_option = input("  ->").strip();
+    print(f"\t[{choice}] User/Email: {found_username}, Password: {found_password}\n");
+    print("\tWhat do you want to edit?\n\n\t[1] User/Email\n\t[2] Password"); edit_option = input("  ->").strip();
     
     if edit_option == "1":
-        clear(); print("------------------------------Edit Password--------------------------------\n\n\tNew Username/Email:"); new_username = input("  ->").strip();
+        clear(); print("------------------------------Edit Password--------------------------------\n\n\tNew User/Email:"); new_username = input("  ->").strip();
         c.execute("UPDATE passwords SET username = ? WHERE id = ?", (new_username, found_id)); conn.commit();
-        input("\n\t\tUsername/Email updated! Please ENTER.");
+        input("\n\t\tUser/Email updated! Please ENTER.");
 
     elif edit_option == "2":
         clear(); print("------------------------------Edit Password--------------------------------\n\n\tNew Password:"); new_password = input("  ->").strip();
@@ -179,7 +179,7 @@ def delete():
     clear(); print("---------------Delete Password---------------\n\n");
     for idx, row in enumerate(results, start=1):
         f_id, f_site, f_login, f_username, f_password = row;
-        print(f"\t[{idx}] Username/Email: {f_username}, Password: {f_password}");
+        print(f"\t[{idx}] User/Email: {f_username}, Password: {f_password}");
     choice = input("\n  ->").strip();
     
     try:
@@ -194,7 +194,7 @@ def delete():
     # Unpack selected row
     f_id, f_site, f_login, f_username, f_password = selected;
 
-    clear(); print(f"------------------------------Delete Password------------------------------\n\n\tSite/App: {f_site}, Username/Email: {f_username}, Password: {f_password}");
+    clear(); print(f"------------------------------Delete Password------------------------------\n\n\tSite/App: {f_site}, User/Email: {f_username}, Password: {f_password}");
     print("\n\tAre you sure you want to delete this entry?\n\t[1] Yes\n\t[2] No"); confirm = input("\n  -> ").strip();
 
     if confirm == "1":
