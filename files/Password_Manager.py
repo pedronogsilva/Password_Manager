@@ -202,19 +202,23 @@ def delete():
         clear(); input("------------------------------Delete Password------------------------------\n\n\t\tEntry deleted! Please ENTER."); return;
     else:
         clear(); input("------------------------------Delete Password------------------------------\n\n\t\tDelete cancelled. Please ENTER."); return;
-    
+
+def verify():
+    pasta = "./bin"; db_path = os.path.join(pasta, "database.db"); conn = sqlite3.connect(db_path); c = conn.cursor();
+    clear(); print("------------------------------Delete Password------------------------------");
+
 def exit(): clear(); print("Exiting App..."); os.sys.exit();
 
 def clear(): os.system("cls");
 
 while True:
     clear(); initialize_db();
-    print("------------------------------PassWord Manager App------------------------------\n\n\t[1] Add Password\n\t[2] View Passwords\n\t[3] Edit Password\n\t[4] Delete Password\n\t[0] Exit App");
-    option = input("\n\t->");
+    option = input("------------------------------PassWord Manager App------------------------------\n\n\t[1] Add Password\n\t[2] View Passwords\n\t[3] Edit Password\n\t[4] Delete Password\n\t[5] Verify Passwords\n\t[0] Exit App\n\t->");
 
     if option == "1": clear(); add();
     elif option == "2": clear(); view();
     elif option == "3": clear(); edit();
     elif option == "4": clear(); delete();
+    elif option == "5": clear; verify();
     elif option == "0": clear(); exit();
     else: clear(); print("------------------------------PassWord Manager App------------------------------\n\n\t\tInvalid Option! Please ENTER."); input();
