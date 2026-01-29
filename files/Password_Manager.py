@@ -219,6 +219,6 @@ while True:
     elif option == "2": clear(); view();
     elif option == "3": clear(); edit();
     elif option == "4": clear(); delete();
-    elif option == "5": clear; verify();
+    elif option == "5": clear(); verify();
     elif option == "0": clear(); exit();
     else: clear(); print("------------------------------PassWord Manager App------------------------------\n\n\t\tInvalid Option! Please ENTER."); input();
